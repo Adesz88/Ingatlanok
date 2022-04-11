@@ -41,9 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
-    //Todo firebase megadva a gradle-ben email bejeletkezés folytatása
     public void register(View view){
-        String username = usernameEditText.getText().toString();
+        String username = usernameEditText.getText().toString(); //Todo username tárolása felhőben, ha kell https://stackoverflow.com/questions/32151178/how-do-you-include-a-username-when-storing-email-and-password-using-firebase-ba
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String passwordAgain = passwordAgainEditText.getText().toString();
@@ -59,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     Log.d(LOG_TAG, "User created");
                     Toast.makeText(RegisterActivity.this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
-                    finish();//Todo ide kell átirányítás főoldalra
+                    finish();
                 } else {
                     Log.d(LOG_TAG, "User wasn't created");
                     Toast.makeText(RegisterActivity.this, "Hiba történt a regisztrációkor:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
