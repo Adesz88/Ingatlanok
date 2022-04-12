@@ -17,4 +17,6 @@ public class PropertyListActivity extends AppCompatActivity {
             finish();
         }
     }
+
+    //Todo itt tartottam
 }
