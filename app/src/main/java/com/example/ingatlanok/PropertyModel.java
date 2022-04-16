@@ -4,18 +4,19 @@ import java.time.LocalDate;
 
 public class PropertyModel {
     private String name;
-    private double price;
+    private float price;
     private String city;
     private String street;
     private String type;
-    private double rooms;
+    private float rooms;
     private String floors;
     private String heating;
     private String user;
     private LocalDate date;
+    private int coverImageResource;
 
-    public PropertyModel(String name, double price, String city, String street, String type,
-                         double rooms, String floors, String heating, String user, LocalDate date) {
+    public PropertyModel(String name, float price, String city, String street, String type,
+                         float rooms, String floors, String heating, String user, LocalDate date, int coverImageResource) {
         this.name = name;
         this.price = price;
         this.city = city;
@@ -26,6 +27,14 @@ public class PropertyModel {
         this.heating = heating;
         this.user = user;
         this.date = date;
+        this.coverImageResource = coverImageResource;
+    }
+
+    public PropertyModel(String name, float price, String city, int coverImageResource) { //Todo csak próba miatt
+        this.name = name;
+        this.price = price;
+        this.city = city;
+        this.coverImageResource = coverImageResource;
     }
 
     public String getName() {
@@ -60,11 +69,11 @@ public class PropertyModel {
         this.type = type;
     }
 
-    public double getRooms() {
+    public float getRooms() {
         return rooms;
     }
 
-    public void setRooms(double rooms) {
+    public void setRooms(float rooms) {
         this.rooms = rooms;
     }
 
@@ -100,11 +109,19 @@ public class PropertyModel {
         this.date = date;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
+    }
+
+    public int getCoverImageResource() {
+        return coverImageResource;
+    }
+
+    public void setCoverImageResource(int coverImageResource) {
+        this.coverImageResource = coverImageResource;
     }
 }
