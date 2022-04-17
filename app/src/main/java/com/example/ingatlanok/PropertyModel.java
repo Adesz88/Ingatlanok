@@ -3,6 +3,7 @@ package com.example.ingatlanok;
 import java.time.LocalDate;
 
 public class PropertyModel {
+    private String id;
     private String name;
     private float price;
     private String city;
@@ -14,6 +15,9 @@ public class PropertyModel {
     private String user;
     private LocalDate date;
     private int coverImageResource;
+
+    public PropertyModel() {
+    }
 
     public PropertyModel(String name, float price, String city, String street, String type,
                          float rooms, String floors, String heating, String user, LocalDate date, int coverImageResource) {
@@ -123,5 +127,13 @@ public class PropertyModel {
 
     public void setCoverImageResource(int coverImageResource) {
         this.coverImageResource = coverImageResource;
+    }
+
+    public String _getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

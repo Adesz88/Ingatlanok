@@ -9,6 +9,9 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,8 @@ public class PropertyListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<PropertyModel> propertyList;
     private PropertyModelAdapter propertyAdapter;
+    private FirebaseFirestore firestore;
+    private CollectionReference properties;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,26 @@ public class PropertyListActivity extends AppCompatActivity {
         propertyList = new ArrayList<>();
         propertyAdapter = new PropertyModelAdapter(this, propertyList);
         recyclerView.setAdapter(propertyAdapter);
-        initializeData();
+
+        firestore = FirebaseFirestore.getInstance();
+        properties = firestore.collection("Properties");
+        queryData();
+    }
+
+    private void queryData(){
+        propertyList.clear();
+        properties.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
+           for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+               PropertyModel property = document.toObject(PropertyModel.class);
+               propertyList.add(property);
+           }
+
+           if (propertyList.size() == 0){
+               initializeData();
+               queryData();
+           }
+           propertyAdapter.notifyDataSetChanged();
+        });
     }
 
     private void initializeData(){
@@ -43,14 +67,10 @@ public class PropertyListActivity extends AppCompatActivity {
         TypedArray propertyPrices = getResources().obtainTypedArray(R.array.property_prices);
         TypedArray propertyCoverImages = getResources().obtainTypedArray(R.array.property_cover_images);
 
-        propertyList.clear();
-
         for (int i = 0; i < propertyNames.length; i++) {
-            propertyList.add(new PropertyModel(propertyNames[i], propertyPrices.getFloat(i, 0),
+            properties.add(new PropertyModel(propertyNames[i], propertyPrices.getFloat(i, 0),
                     propertyCities[i], propertyCoverImages.getResourceId(i, 0)));
         }
         propertyCoverImages.recycle();
-        propertyAdapter.notifyDataSetChanged();
-        propertyAdapter.notifyDataSetChanged();
     }
 }
