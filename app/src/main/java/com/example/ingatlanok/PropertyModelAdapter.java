@@ -1,6 +1,7 @@
 package com.example.ingatlanok;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdapter.ViewHolder> {//Todo filterezés
+
     private ArrayList<PropertyModel> propertiesData;
     private ArrayList<PropertyModel> propertiesDataAll;
     private Context context;
@@ -65,6 +67,10 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
             priceText.setText(Double.toString(currentProperty.getPrice()) + " M Ft");
 
             Glide.with(context).load(currentProperty.getCoverImageResource()).into(coverImage);
+
+            itemView.findViewById(R.id.details).setOnClickListener(view -> ((PropertyListActivity)context).showDetailedDescription(currentProperty));
         }
+
+
     }
 }

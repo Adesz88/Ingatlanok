@@ -13,14 +13,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String INTENT_PASSCODE = "M8XpcBs6y4oM";
     private static final String LOG_TAG = MainActivity.class.getName();
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
+    private CollectionReference users;
 
     EditText usernameEditText;
+    EditText phoneEditText;
     EditText emailEditText;
     EditText passwordEditText;
     EditText passwordAgainEditText;
@@ -35,14 +40,18 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         usernameEditText = findViewById(R.id.usernameEditText);
+        phoneEditText = findViewById(R.id.phoneEditText);
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         passwordAgainEditText = findViewById(R.id.passwordAgainEditText);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        users = firestore.collection("Users");
     }
     public void register(View view){
-        String username = usernameEditText.getText().toString(); //Todo username tárolása felhőben, ha kell https://stackoverflow.com/questions/32151178/how-do-you-include-a-username-when-storing-email-and-password-using-firebase-ba
+        String username = usernameEditText.getText().toString();//Todo username tárolása felhőben, ha kell https://stackoverflow.com/questions/32151178/how-do-you-include-a-username-when-storing-email-and-password-using-firebase-ba
+        String phone = phoneEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String passwordAgain = passwordAgainEditText.getText().toString();
@@ -56,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    users.add(new User(email, username, phone));
                     Log.d(LOG_TAG, "User created");
                     Toast.makeText(RegisterActivity.this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
                     finish();

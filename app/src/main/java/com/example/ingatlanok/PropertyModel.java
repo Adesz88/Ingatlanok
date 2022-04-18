@@ -8,29 +8,27 @@ public class PropertyModel {
     private float price;
     private String city;
     private String street;
-    private String type;
+    private float size;
     private float rooms;
-    private String floors;
     private String heating;
+    private String description;
     private String user;
-    private LocalDate date;
     private int coverImageResource;
 
     public PropertyModel() {
     }
 
-    public PropertyModel(String name, float price, String city, String street, String type,
-                         float rooms, String floors, String heating, String user, LocalDate date, int coverImageResource) {
+    public PropertyModel(String name, float price, String city, String street,
+                         float size, float rooms, String heating, String description, String user, int coverImageResource) {
         this.name = name;
         this.price = price;
         this.city = city;
         this.street = street;
-        this.type = type;
+        this.size = size;
         this.rooms = rooms;
-        this.floors = floors;
         this.heating = heating;
+        this.description = description;
         this.user = user;
-        this.date = date;
         this.coverImageResource = coverImageResource;
     }
 
@@ -65,28 +63,12 @@ public class PropertyModel {
         this.street = street;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public float getRooms() {
         return rooms;
     }
 
     public void setRooms(float rooms) {
         this.rooms = rooms;
-    }
-
-    public String getFloors() {
-        return floors;
-    }
-
-    public void setFloors(String floors) {
-        this.floors = floors;
     }
 
     public String getHeating() {
@@ -103,14 +85,6 @@ public class PropertyModel {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     public float getPrice() {
@@ -135,5 +109,21 @@ public class PropertyModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public float getSize() {
+        return size;
+    }
+
+    public void setSize(float size) {
+        this.size = size;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -13,10 +13,46 @@
         <item>Békéscsaba</item>
     </string-array>
 
+    <string-array name="property_streets">
+        <item>Szeged</item>
+        <item>Budapest</item>
+        <item>Békéscsaba</item>
+    </string-array>
+
+    <string-array name="property_heatins">
+        <item>Radiátor</item>
+        <item>Padlófűtés</item>
+        <item>Radiátor</item>
+    </string-array>
+
+    <string-array name="property_descriptions">
+        <item>Minta leírás</item>
+        <item>Minta leírás</item>
+        <item>Minta leírás</item>
+    </string-array>
+
+    <string-array name="property_users">
+        <item>test@test.com</item>
+        <item>test@test.com</item>
+        <item>test@test.com</item>
+    </string-array>
+
     <array name="property_prices">
         <item>50.5</item>
         <item>65</item>
         <item>5.5</item>
+    </array>
+
+    <array name="property_sizes">
+        <item>50</item>
+        <item>40</item>
+        <item>10</item>
+    </array>
+
+    <array name="property_rooms">
+        <item>5</item>
+        <item>3</item>
+        <item>0</item>
     </array>
 
     <array name="property_cover_images">
