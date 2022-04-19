@@ -1,12 +1,18 @@
 package com.example.ingatlanok;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -90,5 +96,51 @@ public class PropertyListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailedDescriptionActivity.class);
         intent.putExtra("PROPERTY_ID", currentProperty._getId());
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.property_list_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.app_bar_search);
+        MenuItem locationItem = menu.findItem(R.id.app_bar_location);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Log.d(LOG_TAG, "enter"); //Todo filterezés
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        
+        locationItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Log.d(LOG_TAG, "location button clicked"); //Todo filterezés
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.user_listings_button:
+                Intent intent = new Intent(this, UserLIstingsActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.log_out_button:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

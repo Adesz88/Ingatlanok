@@ -14,9 +14,9 @@
     </string-array>
 
     <string-array name="property_streets">
-        <item>Szeged</item>
-        <item>Budapest</item>
-        <item>Békéscsaba</item>
+        <item>Csendes utca</item>
+        <item>Váci út</item>
+        <item>Málna utca</item>
     </string-array>
 
     <string-array name="property_heatins">

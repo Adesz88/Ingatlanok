@@ -49,21 +49,21 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
     public class ViewHolder extends RecyclerView.ViewHolder{
         //Todo feltöltés adatokkal
         private TextView titleText;
-        private TextView infoText;
+        private TextView locationText;
         private TextView priceText;
         private ImageView coverImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleText = itemView.findViewById(R.id.itemTitle);
-            infoText = itemView.findViewById(R.id.subTitle);
+            locationText = itemView.findViewById(R.id.subTitle);
             priceText = itemView.findViewById(R.id.price);
             coverImage = itemView.findViewById(R.id.coverImage);
         }
 
         public void bindTo(PropertyModel currentProperty) {
             titleText.setText(currentProperty.getName());
-            infoText.setText(currentProperty.getCity());
+            locationText.setText(currentProperty.getCity() + ", " + currentProperty.getStreet());
             priceText.setText(Double.toString(currentProperty.getPrice()) + " M Ft");
 
             Glide.with(context).load(currentProperty.getCoverImageResource()).into(coverImage);

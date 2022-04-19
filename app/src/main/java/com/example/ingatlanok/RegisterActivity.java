@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         users = firestore.collection("Users");
     }
     public void register(View view){
-        String username = usernameEditText.getText().toString();//Todo username tárolása felhőben, ha kell https://stackoverflow.com/questions/32151178/how-do-you-include-a-username-when-storing-email-and-password-using-firebase-ba
+        String username = usernameEditText.getText().toString();
         String phone = phoneEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
