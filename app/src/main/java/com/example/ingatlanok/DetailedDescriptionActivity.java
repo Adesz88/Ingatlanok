@@ -51,6 +51,7 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
         descriptionText = findViewById(R.id.description);
         userText = findViewById(R.id.user);
         phoneText = findViewById(R.id.phone);
+        coverImage = findViewById(R.id.coverImage);
 
         firestore = FirebaseFirestore.getInstance();
         properties = firestore.collection("Properties");
@@ -63,10 +64,10 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots){
                 if (document.getId().equals(id)){
                     titleText.setText(document.getString("name"));
-                    priceText.setText("Ár: " + document.getString("price"));
+                    priceText.setText("Ár: " + document.get("price").toString());
                     locationText.setText(document.getString("city") + ", " + document.getString("street"));
-                    sizeText.setText("Alapterület: " + document.getString("size") + "m2");
-                    roomsText.setText("Szobák száma: " + document.getString("rooms"));
+                    sizeText.setText("Alapterület: " + document.get("size").toString() + " m2");
+                    roomsText.setText("Szobák száma: " + document.get("rooms").toString());
                     heatingText.setText("Fűtés: " + document.getString("heating"));
                     descriptionText.setText("Részletes leírás: " + document.getString("description"));
 
@@ -76,8 +77,7 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
                             phoneText.setText("Telefonszám: " + UserDocument.getString("phone"));
                         }
                     });
-
-                    //Glide.with(this).load(Integer.parseInt(document.get("coverImageResource").toString())).into(coverImage); //Todo nem működik
+                    Glide.with(DetailedDescriptionActivity.this).load(Integer.parseInt(document.get("coverImageResource").toString())).into(coverImage); //Todo nem működik
                 }
             }
         });

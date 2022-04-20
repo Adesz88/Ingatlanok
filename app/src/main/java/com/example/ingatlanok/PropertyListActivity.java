@@ -82,7 +82,6 @@ public class PropertyListActivity extends AppCompatActivity {
         TypedArray propertyCoverImages = getResources().obtainTypedArray(R.array.property_cover_images);
 
         for (int i = 0; i < propertyNames.length; i++) {
-            
 
             properties.add(new PropertyModel(propertyNames[i], propertyPrices.getFloat(i, 0),
                     propertyCities[i], propertyStreets[i], propertySizes.getFloat(i, 0),
@@ -114,6 +113,7 @@ public class PropertyListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                propertyAdapter.getFilter().filter(s);
                 return false;
             }
         });

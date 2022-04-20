@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ingatlanok">
         <activity
+            android:name=".AddEditListingActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserLIstingsActivity"
             android:exported="false" />
         <activity

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdapter.ViewHolder> {//Todo filterezés
+public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdapter.ViewHolder> implements Filterable{
 
     private ArrayList<PropertyModel> propertiesData;
     private ArrayList<PropertyModel> propertiesDataAll;
@@ -46,6 +49,40 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
         return propertiesData.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return propertyFilter;
+    }
+
+    private Filter propertyFilter = new Filter() {
+        @Override//Todo filterezés kiegészítése
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<PropertyModel> filteredList = new ArrayList<>();
+            FilterResults results = new FilterResults();
+
+            if (charSequence == null || charSequence.length() == 0){
+                results.count = propertiesDataAll.size();
+                results.values = propertiesDataAll;
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (PropertyModel property : propertiesDataAll){
+                    if (property.getName().toLowerCase().contains(filterPattern) ||property.getCity().toLowerCase().contains(filterPattern)){
+                        filteredList.add(property);
+                    }
+                }
+                results.count = filteredList.size();
+                results.values = filteredList;
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            propertiesData = (ArrayList) filterResults.values;
+            notifyDataSetChanged();
+        }
+    };
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         //Todo feltöltés adatokkal
         private TextView titleText;
@@ -70,7 +107,5 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
 
             itemView.findViewById(R.id.details).setOnClickListener(view -> ((PropertyListActivity)context).showDetailedDescription(currentProperty));
         }
-
-
     }
 }
