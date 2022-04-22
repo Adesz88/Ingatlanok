@@ -19,13 +19,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:padding="8dp"
-            android:text="Cím" />
+            android:hint="Cím" />
 
         <EditText
             android:id="@+id/cityEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Város"
+            android:hint="Város"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/titleEditText" />
@@ -34,7 +34,7 @@
             android:id="@+id/streetEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Utca"
+            android:hint="Utca"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/cityEditText" />
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Ár (M Ft)"
+            android:hint="Ár (M Ft)"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/streetEditText" />
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Alapterület (m2)"
+            android:hint="Alapterület (m2)"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/priceEditText" />
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="Szobák száma"
+            android:hint="Szobák száma"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/sizeEditText" />
@@ -73,7 +73,7 @@
             android:id="@+id/heatingEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fűtés"
+            android:hint="Fűtés"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/roomsEditText" />
@@ -83,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:text="Részletes leírás"
+            android:hint="Részletes leírás"
             android:padding="8dp"
             android:layout_marginHorizontal="20dp"
             android:layout_below="@id/heatingEditText" />
@@ -99,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="send"
                 android:text="Küldés" />
 
             <Button
@@ -107,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="40dp"
+                android:onClick="cancel"
                 android:text="Mégse" />
         </LinearLayout>
 
