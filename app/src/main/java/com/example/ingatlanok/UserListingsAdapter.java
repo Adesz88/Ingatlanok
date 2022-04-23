@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class UserListingsAdapter extends RecyclerView.Adapter<UserListingsAdapte
 
     private ArrayList<PropertyModel> propertiesData;
     private Context context;
+    private int lastPosition = -1;
 
     public UserListingsAdapter(Context context, ArrayList<PropertyModel> propertiesData) {
         this.propertiesData = propertiesData;
@@ -35,7 +38,12 @@ public class UserListingsAdapter extends RecyclerView.Adapter<UserListingsAdapte
         PropertyModel currentProperty = propertiesData.get(position);
 
         holder.bindTo(currentProperty);
-        //Todo ide jön az animáció
+
+        if (holder.getAdapterPosition() > lastPosition){
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.fall_down);
+            holder.itemView.startAnimation(animation);
+            lastPosition = holder.getAdapterPosition();
+        }
     }
 
     @Override

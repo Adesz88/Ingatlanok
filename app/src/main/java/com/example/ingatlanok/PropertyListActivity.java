@@ -7,7 +7,10 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +35,9 @@ public class PropertyListActivity extends AppCompatActivity {
     private PropertyModelAdapter propertyAdapter;
     private FirebaseFirestore firestore;
     private CollectionReference properties;
+    private CollectionReference users;
+    private NotificationHandler notificationHandler;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +53,37 @@ public class PropertyListActivity extends AppCompatActivity {
         propertyAdapter = new PropertyModelAdapter(this, propertyList);
         recyclerView.setAdapter(propertyAdapter);
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        this.registerReceiver(powerReceiver, filter);
+        notificationHandler = new NotificationHandler(this);
+
         firestore = FirebaseFirestore.getInstance();
         properties = firestore.collection("Properties");
+        users = firestore.collection("Users");
         queryData();
+        notificationHandler.send("Új ingatlan hírdetést töltöttek fel.");
     }
+
+    BroadcastReceiver powerReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() == null){
+                return;
+            }
+
+            /*users.whereEqualTo("email", user.getEmail()).get().addOnSuccessListener(queryDocumentSnapshots -> {
+                for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                    if (Boolean.parseBoolean(document.get("notification").toString()) == true){
+                        notificationHandler.send("Új ingatlan hírdetést töltöttek fel.");
+                        userId = document.getId();
+                    }
+                }
+            });
+            users.document(userId).update("notification", false);*/
+            //Todo notification nem működik
+        }
+    };
 
     private void queryData(){
         propertyList.clear();
