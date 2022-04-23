@@ -4,91 +4,97 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/itemTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="title"
-            android:layout_centerHorizontal="true"
-            android:textColor="?android:textColorSecondary" />
-
-        <ImageView
-            android:id="@+id/coverImage"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/itemTitle"
-            android:adjustViewBounds="true" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/coverImage"
-            android:layout_marginBottom="12dp"
-            android:padding="8dp"
-            android:text="price"
-            android:layout_centerHorizontal="true"/>
+            <TextView
+                android:id="@+id/itemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:text="title"
+                android:textColor="?android:textColorSecondary" />
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/price"
-            android:padding="8dp"
-            android:text="location" />
+            <ImageView
+                android:id="@+id/coverImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemTitle"
+                android:adjustViewBounds="true" />
 
-        <TextView
-            android:id="@+id/size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/location"
-            android:padding="8dp"
-            android:text="size" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/coverImage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"
+                android:text="price" />
 
-        <TextView
-            android:id="@+id/rooms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/size"
-            android:padding="8dp"
-            android:text="rooms" />
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price"
+                android:padding="8dp"
+                android:text="location" />
 
-        <TextView
-            android:id="@+id/heating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rooms"
-            android:padding="8dp"
-            android:text="heating" />
+            <TextView
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/location"
+                android:padding="8dp"
+                android:text="size" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/heating"
-            android:padding="8dp"
-            android:text="description" />
+            <TextView
+                android:id="@+id/rooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/size"
+                android:padding="8dp"
+                android:text="rooms" />
 
-        <TextView
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/description"
-            android:padding="8dp"
-            android:text="user" />
+            <TextView
+                android:id="@+id/heating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rooms"
+                android:padding="8dp"
+                android:text="heating" />
 
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/user"
-            android:padding="8dp"
-            android:text="phone" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/heating"
+                android:padding="8dp"
+                android:text="description" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description"
+                android:padding="8dp"
+                android:text="user" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user"
+                android:padding="8dp"
+                android:text="phone" />
+
+        </RelativeLayout>
+    </ScrollView>
+
 </androidx.cardview.widget.CardView>

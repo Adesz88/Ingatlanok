@@ -1,6 +1,7 @@
 package com.example.ingatlanok;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -20,7 +21,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PropertyListActivity extends AppCompatActivity {
@@ -107,7 +107,6 @@ public class PropertyListActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Log.d(LOG_TAG, "enter"); //Todo filterezés
                 return false;
             }
 
@@ -132,8 +131,8 @@ public class PropertyListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.user_listings_button:
-                Intent intent = new Intent(this, UserLIstingsActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(this, UserListingsActivity.class);
+                startActivityForResult(intent, 1);
                 return true;
 
             case R.id.log_out_button:
@@ -142,5 +141,14 @@ public class PropertyListActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            Log.d(LOG_TAG, "onActivityResult: ");
+            queryData();
+        }
     }
 }

@@ -13,7 +13,7 @@
             android:name=".AddEditListingActivity"
             android:exported="false" />
         <activity
-            android:name=".UserLIstingsActivity"
+            android:name=".UserListingsActivity"
             android:exported="false" />
         <activity
             android:name=".DetailedDescriptionActivity"
