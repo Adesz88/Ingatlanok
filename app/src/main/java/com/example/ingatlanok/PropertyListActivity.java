@@ -37,7 +37,7 @@ public class PropertyListActivity extends AppCompatActivity {
     private CollectionReference properties;
     private CollectionReference users;
     private NotificationHandler notificationHandler;
-    private String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +57,12 @@ public class PropertyListActivity extends AppCompatActivity {
         filter.addAction(Intent.ACTION_POWER_CONNECTED);
         this.registerReceiver(powerReceiver, filter);
         notificationHandler = new NotificationHandler(this);
+        notificationHandler.cancel();
 
         firestore = FirebaseFirestore.getInstance();
         properties = firestore.collection("Properties");
         users = firestore.collection("Users");
         queryData();
-        notificationHandler.send("Új ingatlan hírdetést töltöttek fel.");
     }
 
     BroadcastReceiver powerReceiver = new BroadcastReceiver() {
@@ -72,16 +72,14 @@ public class PropertyListActivity extends AppCompatActivity {
                 return;
             }
 
-            /*users.whereEqualTo("email", user.getEmail()).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            users.whereEqualTo("email", user.getEmail()).get().addOnSuccessListener(queryDocumentSnapshots -> {
                 for (QueryDocumentSnapshot document : queryDocumentSnapshots){
                     if (Boolean.parseBoolean(document.get("notification").toString()) == true){
                         notificationHandler.send("Új ingatlan hírdetést töltöttek fel.");
-                        userId = document.getId();
+                        users.document(document.getId()).update("notification", false);
                     }
                 }
             });
-            users.document(userId).update("notification", false);*/
-            //Todo notification nem működik
         }
     };
 
@@ -184,4 +182,11 @@ public class PropertyListActivity extends AppCompatActivity {
             queryData();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(powerReceiver);
+    }
+
 }

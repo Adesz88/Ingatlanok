@@ -81,7 +81,6 @@ public class UserListingsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEditListingActivity.class);
         intent.putExtra("PROPERTY_ID", currentProperty._getId());
         intent.putExtra("edit", true);
-        //startActivity(intent);
         startActivityForResult(intent, 1);
     }
 

@@ -21,6 +21,7 @@ public class AddEditListingActivity extends AppCompatActivity {
     private FirebaseUser user;
     private FirebaseFirestore firestore;
     private CollectionReference properties;
+    private CollectionReference users;
     private String id;
     private boolean edit;
 
@@ -46,6 +47,7 @@ public class AddEditListingActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         properties = firestore.collection("Properties");
+        users = firestore.collection("Users");
 
         edit = getIntent().getBooleanExtra("edit", false);
 
@@ -69,7 +71,7 @@ public class AddEditListingActivity extends AppCompatActivity {
     }
 
     public void send(View view) {
-        if (edit){
+        if (edit){ //Todo hiányzó, hibás adat hibakezelése
             updateProperty();
         } else {
             uploadProperty();
@@ -109,12 +111,19 @@ public class AddEditListingActivity extends AppCompatActivity {
         property.setUser(user.getEmail());
         property.setCoverImageResource(R.drawable.no_image);
         properties.add(property);
+
+        //értesítés beállítása a felhasználóknál
+        users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                users.document(document.getId()).update("notification", true);
+            }
+        });
     }
 
     private void updateProperty(){
         properties.document(id).update("name", titleEditText.getText().toString(),
                 "city", cityEditText.getText().toString(),
-                "street", cityEditText.getText().toString(),
+                "street", streetEditText.getText().toString(),
                 "price", Float.parseFloat(priceEditText.getText().toString()),
                 "size", Float.parseFloat(sizeEditText.getText().toString()),
                 "rooms", Float.parseFloat(roomsEditText.getText().toString()),

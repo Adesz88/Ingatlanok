@@ -45,5 +45,11 @@ public class NotificationHandler {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentTitle("Ingatlanok").setContentText(message).setSmallIcon(R.drawable.ic_house_24)
                 .setContentIntent(pendingIntent);
+
+        this.notificationManager.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    public void cancel(){
+        this.notificationManager.cancel(NOTIFICATION_ID);
     }
 }
