@@ -71,14 +71,20 @@ public class AddEditListingActivity extends AppCompatActivity {
     }
 
     public void send(View view) {
-        if (edit){ //Todo hiányzó, hibás adat hibakezelése
-            updateProperty();
+        boolean success  = false;
+        if (edit){ //Todo hiányzó szövegre nem jó a hibakezelés, esetleg javítani
+            success = updateProperty();
         } else {
-            uploadProperty();
+            success = uploadProperty();
         }
-        Intent returnIntent = new Intent();
-        setResult(1, returnIntent);
-        finish();
+
+        if (success){
+            Intent returnIntent = new Intent();
+            setResult(1, returnIntent);
+            finish();
+        } else{
+            Toast.makeText(this, "Hibás vagy hiányzó adatok", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void queryData(){
@@ -98,41 +104,46 @@ public class AddEditListingActivity extends AppCompatActivity {
         });
     }
 
-    private void uploadProperty(){
-        PropertyModel property = new PropertyModel();
-        property.setName(titleEditText.getText().toString());
-        property.setCity(cityEditText.getText().toString());
-        property.setStreet(cityEditText.getText().toString());
-        property.setPrice(Float.parseFloat(priceEditText.getText().toString()));
-        property.setSize(Float.parseFloat(sizeEditText.getText().toString()));
-        property.setRooms(Float.parseFloat(roomsEditText.getText().toString()));
-        property.setHeating(heatingEditText.getText().toString());
-        property.setDescription(descriptionEditText.getText().toString());
-        property.setUser(user.getEmail());
-        property.setCoverImageResource(R.drawable.no_image);
-        properties.add(property);
+    private boolean uploadProperty(){
+        try {
+            PropertyModel property = new PropertyModel();
+            property.setName(titleEditText.getText().toString());
+            property.setCity(cityEditText.getText().toString());
+            property.setStreet(cityEditText.getText().toString());
+            property.setPrice(Float.parseFloat(priceEditText.getText().toString()));
+            property.setSize(Float.parseFloat(sizeEditText.getText().toString()));
+            property.setRooms(Float.parseFloat(roomsEditText.getText().toString()));
+            property.setHeating(heatingEditText.getText().toString());
+            property.setDescription(descriptionEditText.getText().toString());
+            property.setUser(user.getEmail());
+            property.setCoverImageResource(R.drawable.no_image);
+            properties.add(property);
 
-        //értesítés beállítása a felhasználóknál
-        users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            for (QueryDocumentSnapshot document : queryDocumentSnapshots){
-                users.document(document.getId()).update("notification", true);
-            }
-        });
+            //értesítés beállítása a felhasználóknál
+            users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
+                for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                    users.document(document.getId()).update("notification", true);
+                }
+            });
+        } catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
-    private void updateProperty(){
-        properties.document(id).update("name", titleEditText.getText().toString(),
-                "city", cityEditText.getText().toString(),
-                "street", streetEditText.getText().toString(),
-                "price", Float.parseFloat(priceEditText.getText().toString()),
-                "size", Float.parseFloat(sizeEditText.getText().toString()),
-                "rooms", Float.parseFloat(roomsEditText.getText().toString()),
-                "heating", heatingEditText.getText().toString(),
-                "description", descriptionEditText.getText().toString())
-                .addOnSuccessListener(succes ->{
-                    Toast.makeText(this, "A hírdetés sikeresen módosítva", Toast.LENGTH_SHORT);
-        }).addOnFailureListener(failure ->{
-            Toast.makeText(this, "A hírdetés módosítása sikertelen", Toast.LENGTH_LONG);
-        });
+    private boolean updateProperty(){
+        try {
+            properties.document(id).update("name", titleEditText.getText().toString(),
+                    "city", cityEditText.getText().toString(),
+                    "street", streetEditText.getText().toString(),
+                    "price", Float.parseFloat(priceEditText.getText().toString()),
+                    "size", Float.parseFloat(sizeEditText.getText().toString()),
+                    "rooms", Float.parseFloat(roomsEditText.getText().toString()),
+                    "heating", heatingEditText.getText().toString(),
+                    "description", descriptionEditText.getText().toString());
+        } catch (Exception e){
+            return false;
+        }
+        return true;
     }
 }

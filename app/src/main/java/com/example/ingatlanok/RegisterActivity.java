@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    users.add(new User(email, username, phone));
+                    users.add(new User(email, username, phone, false));
                     Log.d(LOG_TAG, "User created");
                     Toast.makeText(RegisterActivity.this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
                     finish();

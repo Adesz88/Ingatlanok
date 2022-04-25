@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,12 +15,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final String INTENT_PASSCODE = "M8XpcBs6y4oM";
     private static final String LOG_TAG = MainActivity.class.getName();
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
+    private CollectionReference users;
 
     EditText emailEditText;
     EditText passwordEditText;
@@ -32,6 +40,28 @@ public class MainActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        Log.d(LOG_TAG, "onCreate: ");
+        users = firestore.collection("Users");
+        initializeData();
+    }
+
+    private void initializeData(){
+        Log.d(LOG_TAG, "initializeData: ");
+        users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
+            if (queryDocumentSnapshots.size() < 0){
+                String[] userNames = getResources().getStringArray(R.array.user_names);
+                String[] userEmails = getResources().getStringArray(R.array.user_emails);
+                String[] userPhones = getResources().getStringArray(R.array.user_phones);
+                TypedArray userNotifications = getResources().obtainTypedArray(R.array.user_notifications);
+
+                for (int i = 0; i < userNames.length; i++) {
+                    users.add(new User(userEmails[i], userNames[i], userPhones[i], userNotifications.getBoolean(i, false)));
+                    Log.d(LOG_TAG, "initializeData: new user");
+                }
+            }
+        });
+        //Todo userek regisztrálása nem megy
     }
 
     public void register(View view) {

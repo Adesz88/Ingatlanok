@@ -4,14 +4,16 @@ public class User {
     private String email;
     private String name;
     private String phone;
+    private Boolean notification;
 
     public User() {
     }
 
-    public User(String email, String name, String phone) {
+    public User(String email, String name, String phone, boolean notification) {
         this.email = email;
         this.name = name;
         this.phone = phone;
+        this.notification = notification;
     }
 
     public String getEmail() {
@@ -36,5 +38,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Boolean getNotification() {
+        return notification;
+    }
+
+    public void setNotification(Boolean notification) {
+        this.notification = notification;
     }
 }

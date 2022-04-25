@@ -60,4 +60,28 @@
         <item>@drawable/lakas</item>
         <item>@drawable/garazs</item>
     </array>
+    
+    <string-array name="user_emails">
+        <item>test@test.com</item>
+        <item>gabor@minta.com</item>
+        <item>user@gmail.com</item>
+    </string-array>
+
+    <string-array name="user_names">
+        <item>Test User</item>
+        <item>Minta Gábor</item>
+        <item>Technicaluser</item>
+    </string-array>
+
+    <string-array name="user_phones">
+        <item>+36201682591</item>
+        <item>+36301234567</item>
+        <item>+36301234567</item>
+    </string-array>
+
+    <array name="user_notifications">
+        <item>false</item>
+        <item>false</item>
+        <item>false</item>
+    </array>
 </resources>
