@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,8 +72,8 @@ public class AddEditListingActivity extends AppCompatActivity {
     }
 
     public void send(View view) {
-        boolean success  = false;
-        if (edit){ //Todo hiányzó szövegre nem jó a hibakezelés, esetleg javítani
+        boolean success;
+        if (edit){
             success = updateProperty();
         } else {
             success = uploadProperty();
@@ -106,10 +107,14 @@ public class AddEditListingActivity extends AppCompatActivity {
 
     private boolean uploadProperty(){
         try {
+            if (titleEditText.getText().toString().isEmpty() || cityEditText.getText().toString().isEmpty()
+                    || streetEditText.getText().toString().isEmpty() || heatingEditText.getText().toString().isEmpty()){
+                return false;
+            }
             PropertyModel property = new PropertyModel();
             property.setName(titleEditText.getText().toString());
             property.setCity(cityEditText.getText().toString());
-            property.setStreet(cityEditText.getText().toString());
+            property.setStreet(streetEditText.getText().toString());
             property.setPrice(Float.parseFloat(priceEditText.getText().toString()));
             property.setSize(Float.parseFloat(sizeEditText.getText().toString()));
             property.setRooms(Float.parseFloat(roomsEditText.getText().toString()));
@@ -133,6 +138,10 @@ public class AddEditListingActivity extends AppCompatActivity {
 
     private boolean updateProperty(){
         try {
+            if (titleEditText.getText().toString().isEmpty() || cityEditText.getText().toString().isEmpty()
+                    || streetEditText.getText().toString().isEmpty() || heatingEditText.getText().toString().isEmpty()){
+                return false;
+            }
             properties.document(id).update("name", titleEditText.getText().toString(),
                     "city", cityEditText.getText().toString(),
                     "street", streetEditText.getText().toString(),

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Todo majd átírni-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -14,6 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
             android:text="placeholder"
             android:textColor="?android:textColorSecondary" />
 
@@ -22,10 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/itemTitle"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            tools:srcCompat="@tools:sample/backgrounds/scenic[10]" />
 
         <TextView
-            android:id="@+id/subTitle"
+            android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/coverImage"
@@ -33,13 +36,21 @@
             android:text="placeholder" />
 
         <TextView
+            android:id="@+id/size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/location"
+            android:padding="8dp"
+            android:text="25 m2"/>
+
+        <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/subTitle"
-            android:layout_marginBottom="12dp"
+            android:layout_below="@id/size"
             android:padding="8dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:text="10 M Ft"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +60,7 @@
 
             <Button
                 android:id="@+id/details"
-                android:layout_width="385dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Részletek" />

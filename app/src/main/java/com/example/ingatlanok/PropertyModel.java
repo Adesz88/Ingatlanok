@@ -32,13 +32,6 @@ public class PropertyModel {
         this.coverImageResource = coverImageResource;
     }
 
-    public PropertyModel(String name, float price, String city, int coverImageResource) { //Todo csak próba miatt
-        this.name = name;
-        this.price = price;
-        this.city = city;
-        this.coverImageResource = coverImageResource;
-    }
-
     public String getName() {
         return name;
     }

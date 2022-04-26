@@ -72,7 +72,6 @@ public class UserListingsAdapter extends RecyclerView.Adapter<UserListingsAdapte
 
             Glide.with(context).load(currentProperty.getCoverImageResource()).into(coverImage);
 
-            //Todo befejezni
             itemView.findViewById(R.id.editButton).setOnClickListener(view -> ((UserListingsActivity)context)
                     .editProperty(currentProperty));
 

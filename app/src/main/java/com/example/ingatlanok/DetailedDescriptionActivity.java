@@ -77,7 +77,7 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
                             phoneText.setText("Telefonszám: " + UserDocument.getString("phone"));
                         }
                     });
-                    Glide.with(DetailedDescriptionActivity.this).load(Integer.parseInt(document.get("coverImageResource").toString())).into(coverImage); //Todo nem működik
+                    Glide.with(DetailedDescriptionActivity.this).load(Integer.parseInt(document.get("coverImageResource").toString())).into(coverImage);
                 }
             }
         });

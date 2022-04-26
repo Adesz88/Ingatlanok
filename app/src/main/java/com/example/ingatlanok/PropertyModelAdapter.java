@@ -61,7 +61,7 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
     }
 
     private Filter propertyFilter = new Filter() {
-        @Override//Todo filterezés kiegészítése
+        @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             ArrayList<PropertyModel> filteredList = new ArrayList<>();
             FilterResults results = new FilterResults();
@@ -90,16 +90,17 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
     };
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        //Todo feltöltés adatokkal
         private TextView titleText;
         private TextView locationText;
+        private TextView sizeText;
         private TextView priceText;
         private ImageView coverImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleText = itemView.findViewById(R.id.itemTitle);
-            locationText = itemView.findViewById(R.id.subTitle);
+            locationText = itemView.findViewById(R.id.location);
+            sizeText = itemView.findViewById(R.id.size);
             priceText = itemView.findViewById(R.id.price);
             coverImage = itemView.findViewById(R.id.coverImage);
         }
@@ -107,6 +108,7 @@ public class PropertyModelAdapter extends RecyclerView.Adapter<PropertyModelAdap
         public void bindTo(PropertyModel currentProperty) {
             titleText.setText(currentProperty.getName());
             locationText.setText(currentProperty.getCity() + ", " + currentProperty.getStreet());
+            sizeText.setText(currentProperty.getSize() + " m2");
             priceText.setText(Double.toString(currentProperty.getPrice()) + " M Ft");
 
             Glide.with(context).load(currentProperty.getCoverImageResource()).into(coverImage);
