@@ -17,7 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
@@ -41,15 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        Log.d(LOG_TAG, "onCreate: ");
         users = firestore.collection("Users");
         initializeData();
     }
 
+    //felhasználók feltöltése, regisztrálása
     private void initializeData(){
-        Log.d(LOG_TAG, "initializeData: ");
+        ArrayList<User> usersList = new ArrayList<>();
         users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
-            if (queryDocumentSnapshots.size() < 0){
+            if (queryDocumentSnapshots.size() == 0){
                 String[] userNames = getResources().getStringArray(R.array.user_names);
                 String[] userEmails = getResources().getStringArray(R.array.user_emails);
                 String[] userPhones = getResources().getStringArray(R.array.user_phones);
@@ -57,11 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < userNames.length; i++) {
                     users.add(new User(userEmails[i], userNames[i], userPhones[i], userNotifications.getBoolean(i, false)));
-                    Log.d(LOG_TAG, "initializeData: new user");
+                    firebaseAuth.createUserWithEmailAndPassword(userEmails[i], "pass12");
                 }
             }
         });
-        //Todo userek regisztrálása nem megy
     }
 
     public void register(View view) {

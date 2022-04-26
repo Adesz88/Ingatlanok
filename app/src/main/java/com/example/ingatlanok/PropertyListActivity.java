@@ -133,7 +133,6 @@ public class PropertyListActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.property_list_menu, menu);
         MenuItem searchItem = menu.findItem(R.id.app_bar_search);
-        MenuItem locationItem = menu.findItem(R.id.app_bar_location);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -144,14 +143,6 @@ public class PropertyListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 propertyAdapter.getFilter().filter(s);
-                return false;
-            }
-        });
-        
-        locationItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                Log.d(LOG_TAG, "location button clicked"); //Todo filterezés
                 return false;
             }
         });
@@ -178,7 +169,6 @@ public class PropertyListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1){
-            Log.d(LOG_TAG, "onActivityResult: ");
             queryData();
         }
     }
@@ -188,5 +178,4 @@ public class PropertyListActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(powerReceiver);
     }
-
 }
