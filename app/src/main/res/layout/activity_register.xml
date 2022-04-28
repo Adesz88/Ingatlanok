@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/phoneEditText"
@@ -26,13 +26,15 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Telefonszám"
+                android:hint="@string/phone"
                 android:inputType="phone"
                 android:minHeight="48dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/usernameEditText"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/passwordAgainEditText"
@@ -42,13 +44,15 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Jelszó megerősítése"
+                android:hint="@string/password_again"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/emailEditText"
@@ -58,13 +62,15 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/phoneEditText"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/usernameEditText"
@@ -74,13 +80,15 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Felhasználónév"
+                android:hint="@string/username"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/passwordEditText"
@@ -90,20 +98,22 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Jelszó"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Regisztráció"
+                android:text="@string/registration"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="cancel"
-                    android:text="Mégse"
+                    android:text="@string/cancel"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -138,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="register"
-                    android:text="Regisztráció"
+                    android:text="@string/registration"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

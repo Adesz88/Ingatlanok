@@ -1,64 +1,95 @@
 <resources>
     <string name="app_name">Ingatlanok</string>
+    <string name="email">Email</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration">Regisztrálás</string>
+    <string name="phone">Telefonszám</string>
+    <string name="password_again">Jelszó megerősítése</string>
+    <string name="username">Felhasználónév</string>
+    <string name="title">Cím</string>
+    <string name="city">Város</string>
+    <string name="street">Utca</string>
+    <string name="price_m_ft">Ár (M Ft)</string>
+    <string name="size_m2">Alapterület (m2)</string>
+    <string name="number_of_rooms">Szobák száma</string>
+    <string name="heating">Fűtés</string>
+    <string name="detailed_description">Részletes leírás</string>
+    <string name="send">Küldés</string>
+    <string name="cancel">Mégse</string>
+    <string name="details">Részletek</string>
+    <string name="search">Keresés</string>
+    <string name="my_listings">Hírdetéseim</string>
+    <string name="logout">Kijelentkezés</string>
 
     <string-array name="property_names">
-        <item>Családi ház</item>
-        <item>Belvárosi lakás</item>
-        <item>Garázs</item>
+        <item>Eladó családi ház</item>
+        <item>13. kerületi tégla lakás</item>
+        <item>Eladó önálló garázs</item>
+        <item>Eladó panel lakás</item>
     </string-array>
 
     <string-array name="property_cities">
         <item>Szeged</item>
         <item>Budapest</item>
         <item>Békéscsaba</item>
+        <item>Szeged</item>
     </string-array>
 
     <string-array name="property_streets">
-        <item>Csendes utca</item>
-        <item>Váci út</item>
-        <item>Málna utca</item>
+        <item>Pipiske utca</item>
+        <item>Angyalföld - Lőportárdűlő</item>
+        <item>Katona utca</item>
+        <item>Szamos utca</item>
     </string-array>
 
     <string-array name="property_heatins">
-        <item>Radiátor</item>
-        <item>Padlófűtés</item>
-        <item>Radiátor</item>
+        <item>gáz (cirko)</item>
+        <item>gáz (cirko)</item>
+        <item>Központi</item>
+        <item>távfűtés egyedi méréssel</item>
     </string-array>
 
     <string-array name="property_descriptions">
-        <item>Minta leírás</item>
-        <item>Minta leírás</item>
-        <item>Minta leírás</item>
+        <item>Szegeden a Pipiske utcában Újszegeden eladó sorház.1987-ben épült az ingatlan azóta a nyílászárók ki lettek cserélve korszerű műanyagra valamint a külső szigetelés is meg lett csinálva.Az alsó szinten tágas konyha(11 nm) tágas nappali (24.2 nm) + üvegezett télikert (7.83 nm) valamint 3 kamra található, a Garázsból (16 nm)egy szélfogón át az ingatlanba lehet jutni száraz lábbal.A felső szinten 3 szoba és egy fürdőszoba található.Az ingatlan költözhető állapotú.</item>
+        <item>Eladó Budapesten a 13. kerületben egy másfél szobás, 45 nm-es tégla lakás. A kívül-belül felújított homlokzatú, rendszeresen karbantartott épület félemeletén található lakás teljes felújításon esett át. A víz, fűtés, csatorna teljes cseréje megtörtént, valamint a válaszfalak is újra lettek építve/ tul. lap szerint 1 szoba/. A lakás saját célra lakberendező által lett kialakítva és berendezve prémium minőségű anyagokkal és bútorokkal. Eredeti mészkő burkolat van az előszobában és a teljes fürdőszobában, olasz bársonyfestést kapott a nappali és a hálószoba, hangulatvilágítás van a nappaliban és a hálóban. Minden helyiség ablakos.</item>
+        <item>Eladóvá vált egy tágas 18 m2-es garázs. A garázs saját villanyórával rendelkezik és egy lépcsőház alatt található, ahol a lépcsőház fűtés csövei folyamatosan biztosítják a meleget télen.</item>
+        <item>Szeged Tarján városrészében, eladó, egy 1977 - ben épült nyolcadik emeleti, 53 nm - es, panel építésű, három szobás lakás. Az épület megvalósult kifizetett panel programmal rendelkezik. A lakás dél, délkeleti fekvésű, napfényes ingatlan. Az ingatlan fűtéséről távhő (egyedi mérővel) gondoskodik.</item>
     </string-array>
 
     <string-array name="property_users">
         <item>technicaluser88@gmail.com</item>
         <item>test@test.com</item>
         <item>test@test.com</item>
+        <item>technicaluser88@gmail.com</item>
     </string-array>
 
     <array name="property_prices">
-        <item>50.5</item>
-        <item>65</item>
+        <item>69</item>
+        <item>56</item>
         <item>5.5</item>
+        <item>31.99</item>
     </array>
 
     <array name="property_sizes">
-        <item>50</item>
-        <item>40</item>
-        <item>10</item>
+        <item>103</item>
+        <item>45</item>
+        <item>18</item>
+        <item>53</item>
     </array>
 
     <array name="property_rooms">
-        <item>5</item>
-        <item>3</item>
+        <item>4</item>
+        <item>1.5</item>
         <item>0</item>
+        <item>3</item>
     </array>
 
     <array name="property_cover_images">
         <item>@drawable/csaladi_haz</item>
         <item>@drawable/lakas</item>
         <item>@drawable/garazs</item>
+        <item></item>
     </array>
     
     <string-array name="user_emails">

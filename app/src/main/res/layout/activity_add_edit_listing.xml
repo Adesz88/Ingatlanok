@@ -6,111 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".AddEditListingActivity">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginVertical="20dp">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/titleEditText"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:padding="8dp"
-            android:hint="Cím" />
+            android:layout_marginVertical="20dp">
 
-        <EditText
-            android:id="@+id/cityEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Város"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/titleEditText" />
-
-        <EditText
-            android:id="@+id/streetEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Utca"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/cityEditText" />
-
-        <EditText
-            android:id="@+id/priceEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Ár (M Ft)"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/streetEditText" />
-
-        <EditText
-            android:id="@+id/sizeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Alapterület (m2)"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/priceEditText" />
-
-        <EditText
-            android:id="@+id/roomsEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Szobák száma"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/sizeEditText" />
-
-        <EditText
-            android:id="@+id/heatingEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Fűtés"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/roomsEditText" />
-
-        <EditText
-            android:id="@+id/descriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:hint="Részletes leírás"
-            android:padding="8dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_below="@id/heatingEditText" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/descriptionEditText"
-            android:padding="20dp">
-
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/titleEditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="send"
-                android:text="Küldés" />
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/title"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:textColorHint="#757575" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/cityEditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="40dp"
-                android:onClick="cancel"
-                android:text="Mégse" />
-        </LinearLayout>
+                android:layout_below="@id/titleEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/city"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:textColorHint="#757575" />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/streetEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cityEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/street"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:textColorHint="#757575" />
+
+            <EditText
+                android:id="@+id/priceEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/streetEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/price_m_ft"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:textColorHint="#757575" />
+
+            <EditText
+                android:id="@+id/sizeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/priceEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/size_m2"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:textColorHint="#757575" />
+
+            <EditText
+                android:id="@+id/roomsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sizeEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/number_of_rooms"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:textColorHint="#757575" />
+
+            <EditText
+                android:id="@+id/heatingEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/roomsEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/heating"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:inputType="text"
+                android:textColorHint="#757575" />
+
+            <EditText
+                android:id="@+id/descriptionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/heatingEditText"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/detailed_description"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                android:textColorHint="#757575" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descriptionEditText"
+                android:padding="20dp">
+
+                <Button
+                    android:id="@+id/sendButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="send"
+                    android:text="@string/send" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_weight="1"
+                    android:onClick="cancel"
+                    android:text="@string/cancel" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
