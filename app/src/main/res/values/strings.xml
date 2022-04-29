@@ -27,6 +27,7 @@
         <item>13. kerületi tégla lakás</item>
         <item>Eladó önálló garázs</item>
         <item>Eladó panel lakás</item>
+        <item>Eladó ikerház</item>
     </string-array>
 
     <string-array name="property_cities">
@@ -34,6 +35,8 @@
         <item>Budapest</item>
         <item>Békéscsaba</item>
         <item>Szeged</item>
+        <item>Pécs</item>
+
     </string-array>
 
     <string-array name="property_streets">
@@ -41,6 +44,7 @@
         <item>Angyalföld - Lőportárdűlő</item>
         <item>Katona utca</item>
         <item>Szamos utca</item>
+        <item>Kamilla utca</item>
     </string-array>
 
     <string-array name="property_heatins">
@@ -48,6 +52,7 @@
         <item>gáz (cirko)</item>
         <item>Központi</item>
         <item>távfűtés egyedi méréssel</item>
+        <item>elektromos</item>
     </string-array>
 
     <string-array name="property_descriptions">
@@ -55,20 +60,23 @@
         <item>Eladó Budapesten a 13. kerületben egy másfél szobás, 45 nm-es tégla lakás. A kívül-belül felújított homlokzatú, rendszeresen karbantartott épület félemeletén található lakás teljes felújításon esett át. A víz, fűtés, csatorna teljes cseréje megtörtént, valamint a válaszfalak is újra lettek építve/ tul. lap szerint 1 szoba/. A lakás saját célra lakberendező által lett kialakítva és berendezve prémium minőségű anyagokkal és bútorokkal. Eredeti mészkő burkolat van az előszobában és a teljes fürdőszobában, olasz bársonyfestést kapott a nappali és a hálószoba, hangulatvilágítás van a nappaliban és a hálóban. Minden helyiség ablakos.</item>
         <item>Eladóvá vált egy tágas 18 m2-es garázs. A garázs saját villanyórával rendelkezik és egy lépcsőház alatt található, ahol a lépcsőház fűtés csövei folyamatosan biztosítják a meleget télen.</item>
         <item>Szeged Tarján városrészében, eladó, egy 1977 - ben épült nyolcadik emeleti, 53 nm - es, panel építésű, három szobás lakás. Az épület megvalósult kifizetett panel programmal rendelkezik. A lakás dél, délkeleti fekvésű, napfényes ingatlan. Az ingatlan fűtéséről távhő (egyedi mérővel) gondoskodik.</item>
+        <item>Eladó Pécs egyik frekventált utcájában egy kétszintes ikerház. A felső szint teljes értékű, nem padlástér.Az ingatlanhoz tartozik: Fedett kocsibeálló (két autó részére), zárt udvar, tároló, kamra, padlás, hűtő-fűtő klíma szintenként.</item>
     </string-array>
 
     <string-array name="property_users">
-        <item>technicaluser88@gmail.com</item>
-        <item>test@test.com</item>
-        <item>test@test.com</item>
-        <item>technicaluser88@gmail.com</item>
+        <item>test@email.com</item>
+        <item>bence.gyongyi@email.com</item>
+        <item>gabor@minta.com</item>
+        <item>test@email.com</item>
+        <item>bence.gyongyi@email.com</item>
     </string-array>
 
     <array name="property_prices">
         <item>69</item>
         <item>56</item>
         <item>5.5</item>
-        <item>31.99</item>
+        <item>32</item>
+        <item>110</item>
     </array>
 
     <array name="property_sizes">
@@ -76,6 +84,7 @@
         <item>45</item>
         <item>18</item>
         <item>53</item>
+        <item>132</item>
     </array>
 
     <array name="property_rooms">
@@ -83,30 +92,32 @@
         <item>1.5</item>
         <item>0</item>
         <item>3</item>
+        <item>3.5</item>
     </array>
 
     <array name="property_cover_images">
-        <item>@drawable/csaladi_haz</item>
-        <item>@drawable/lakas</item>
-        <item>@drawable/garazs</item>
-        <item></item>
+        <item>@drawable/house</item>
+        <item>@drawable/flat</item>
+        <item>@drawable/garage</item>
+        <item>@drawable/szeged_flat</item>
+        <item>@drawable/pecs_house</item>
     </array>
     
     <string-array name="user_emails">
-        <item>test@test.com</item>
+        <item>bence.gyongyi@email.com</item>
         <item>gabor@minta.com</item>
-        <item>user@gmail.com</item>
+        <item>test@email.com</item>
     </string-array>
 
     <string-array name="user_names">
-        <item>Test User</item>
+        <item>Bence Gyöngyi</item>
         <item>Minta Gábor</item>
-        <item>Technicaluser</item>
+        <item>Test User</item>
     </string-array>
 
     <string-array name="user_phones">
         <item>+36201682591</item>
-        <item>+36301234567</item>
+        <item>+36303791917</item>
         <item>+36301234567</item>
     </string-array>
 
