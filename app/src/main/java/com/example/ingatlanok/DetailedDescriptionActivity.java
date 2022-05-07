@@ -59,6 +59,7 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
         queryData();
     }
 
+    //a hírdetés letöltése
     private void queryData() {
         properties.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots){
@@ -71,6 +72,7 @@ public class DetailedDescriptionActivity extends AppCompatActivity {
                     heatingText.setText("Fűtés: " + document.getString("heating"));
                     descriptionText.setText("Részletes leírás: " + document.getString("description"));
 
+                    //a hírdetéshez tartozó felhasználó adatainak letöltése
                     users.whereEqualTo("email", document.getString("user")).get().addOnSuccessListener(queryUserDocumentSnapshots -> {
                         for (QueryDocumentSnapshot UserDocument : queryUserDocumentSnapshots){
                             userText.setText("Hírdető: " + UserDocument.getString("name"));

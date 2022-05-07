@@ -65,6 +65,7 @@ public class PropertyListActivity extends AppCompatActivity {
         queryData();
     }
 
+    //értesítés küldése
     BroadcastReceiver powerReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -83,6 +84,7 @@ public class PropertyListActivity extends AppCompatActivity {
         }
     };
 
+    //hírdetések lekérdezése
     private void queryData(){
         propertyList.clear();
         properties.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
@@ -100,6 +102,7 @@ public class PropertyListActivity extends AppCompatActivity {
         });
     }
 
+    //adatok feltöltése, ha a firestore üres
     private void initializeData(){
         String[] propertyNames = getResources().getStringArray(R.array.property_names);
         String[] propertyCities = getResources().getStringArray(R.array.property_cities);

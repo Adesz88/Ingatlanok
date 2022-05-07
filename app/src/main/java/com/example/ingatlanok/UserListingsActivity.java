@@ -63,6 +63,7 @@ public class UserListingsActivity extends AppCompatActivity {
         setResult(1, returnIntent);
     }
 
+    //a bejelentkezett felhasználóhoz tartozó hírdetések letöltése
     public void queryData(){
         propertyList.clear();
         properties.whereEqualTo("user", user.getEmail()).get().addOnSuccessListener(queryDocumentSnapshots -> {
@@ -90,6 +91,7 @@ public class UserListingsActivity extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
+    //hírdetés törlése
     public void deleteProperty(PropertyModel currentProperty) {
         DocumentReference reference = properties.document(currentProperty._getId());
         reference.delete().addOnSuccessListener(success ->{

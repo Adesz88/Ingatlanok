@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "235908760316",
+    "project_id": "ingatlanok-fa468",
+    "storage_bucket": "ingatlanok-fa468.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235908760316:android:ce1b1e0101b5afa61c0d79",
+        "android_client_info": {
+          "package_name": "com.example.ingatlanok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235908760316-tjutn3bn6rhlej3j7q6l0dlnaki52149.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ingatlanok",
+            "certificate_hash": "fd736aac15544424610e83737162a5a9602ad4ac"
+          }
+        },
+        {
+          "client_id": "235908760316-9ka7jjocct6ca13ermrivtg4o23c1u1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeN2whEaisjR3n4kaf8ygxC3bwHWWUePo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235908760316-9ka7jjocct6ca13ermrivtg4o23c1u1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -49,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         users = firestore.collection("Users");
     }
+
+    //felhasználó regisztrálása, feltöltése
     public void register(View view){
         String username = usernameEditText.getText().toString();
         String phone = phoneEditText.getText().toString();
@@ -56,25 +58,29 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         String passwordAgain = passwordAgainEditText.getText().toString();
 
-        if (!password.equals(passwordAgain)){
-            Toast.makeText(RegisterActivity.this, "A beírt jelszó nem egyezik!", Toast.LENGTH_SHORT).show();
-        }
+        if (!username.isEmpty() && !phone.isEmpty() && !email.isEmpty() && !password.isEmpty() && !passwordAgain.isEmpty()) {
+            if (!password.equals(passwordAgain)){
+                Toast.makeText(RegisterActivity.this, "A beírt jelszó nem egyezik!", Toast.LENGTH_SHORT).show();
+            } else {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
-
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    users.add(new User(email, username, phone, false));
-                    Log.d(LOG_TAG, "User created");
-                    Toast.makeText(RegisterActivity.this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Log.d(LOG_TAG, "User wasn't created");
-                    Toast.makeText(RegisterActivity.this, "Hiba történt a regisztrációkor:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            users.add(new User(email, username, phone, false));
+                            Log.d(LOG_TAG, "User created");
+                            Toast.makeText(RegisterActivity.this, "Sikeres regisztráció", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Log.d(LOG_TAG, "User wasn't created");
+                            Toast.makeText(RegisterActivity.this, "Hiba történt a regisztrációkor:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
-        });
+        } else {
+            Toast.makeText(RegisterActivity.this, "Üres mező(k)", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void cancel(View view){

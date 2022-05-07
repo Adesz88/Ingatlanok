@@ -88,6 +88,7 @@ public class AddEditListingActivity extends AppCompatActivity {
         }
     }
 
+    //szerkesztendő hírdetés lekérése és a mezők kitöltése
     private void queryData(){
         properties.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots){
@@ -105,6 +106,7 @@ public class AddEditListingActivity extends AppCompatActivity {
         });
     }
 
+    //új hírdetés feltöltése
     private boolean uploadProperty(){
         try {
             if (titleEditText.getText().toString().isEmpty() || cityEditText.getText().toString().isEmpty()
@@ -136,6 +138,7 @@ public class AddEditListingActivity extends AppCompatActivity {
         return true;
     }
 
+    //hírdetés szerkesztése
     private boolean updateProperty(){
         try {
             if (titleEditText.getText().toString().isEmpty() || cityEditText.getText().toString().isEmpty()

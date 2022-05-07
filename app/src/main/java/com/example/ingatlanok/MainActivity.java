@@ -19,6 +19,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private static final String INTENT_PASSCODE = "M8XpcBs6y4oM";
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     //felhasználók feltöltése, regisztrálása
     private void initializeData(){
+        Random random = new Random();
         ArrayList<User> usersList = new ArrayList<>();
         users.orderBy("name").get().addOnSuccessListener(queryDocumentSnapshots -> {
             if (queryDocumentSnapshots.size() == 0){
@@ -56,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < userNames.length; i++) {
                     users.add(new User(userEmails[i], userNames[i], userPhones[i], userNotifications.getBoolean(i, false)));
-                    firebaseAuth.createUserWithEmailAndPassword(userEmails[i], "pass12");
+                    String pass = "pass" + random.nextInt(9) + random.nextInt(9);
+                    if (userEmails[i].equals("test@email.com")) {
+                        firebaseAuth.createUserWithEmailAndPassword(userEmails[i], "pass12");
+                    } else{
+                        firebaseAuth.createUserWithEmailAndPassword(userEmails[i], pass);
+                    }
                 }
             }
         });
