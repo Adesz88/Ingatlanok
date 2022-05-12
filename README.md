@@ -1,2 +1,2 @@
 # Ingatlanok
-University Android mobile development curse project
+University Android mobile development course project
